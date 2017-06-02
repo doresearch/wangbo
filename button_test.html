@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <style type="text/css">
+
+        div {
+            width: 1000px;
+        }
+
+        ul {
+            list-style: none;
+            font-size: 0;
+            padding-left: 0px; 
+        }
+
+        ul li {
+            display: inline;
+            font-size: 15px;
+            float: left;
+            /*list-style-type: none;*/
+        }
+        ul li :first-child {
+            background-image: url(../button/button.png);
+        }
+
+        a {
+            /*background-image: url(../button/button.png);*/
+            display: block;
+            width: 200px;
+            height: 20px;
+            background-position: top left;
+            background-repeat: no-repeat;
+            /*text-indent: 100%;*/
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-image: url(../button/button.png);
+        }
+
+    </style>
+    <script type="text/javascript">
+        var url = "{% url 'name' 'parm' %}";
+        url = url.replace('parm', parm);
+        var form = $("#jump_form");
+        if (form) {
+            $(form).attr("action", url);
+            $("#jump_form input[name=param_b]").val(aa);
+            $(form).submit();
+        }
+    </script>
+</head>
+<body>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ul>
+            <li><a href="">aaaaaaa</a></li>
+            <li><a href="">bbbbbbb</a></li>
+            <li><a href="">ccccccc</a></li>
+            <li><a href="">ddddddd</a></li>
+            <li><a href="">eeeeeee</a></li>
+        </ul>
+    </div>
+</body>
+</html>
