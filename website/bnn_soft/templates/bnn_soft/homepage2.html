@@ -1,0 +1,107 @@
+{% extends 'bnn_soft/base.html' %}
+
+{% block html_title %}{{_('ホーム')}} | {{_('バナナソフト会社')}}{% endblock %}
+
+{% block header %}
+    <div class="logo"><img src="../static/bnn_soft/images/bnn_logo_01.jpg"></div>
+        <div class="goto">
+            <ul>
+                <li><a href="">ホ ー ム</a></li>
+                <li><a href="javascript: company();">社会情報</a></li>
+                <li><a href="">経営理念</a></li>
+                <li><a href="">業務内容</a></li>
+                <li><a href="">採用情報</a></li>
+            </ul>
+        </div>
+{% endblock %}
+
+{% block title %}
+    <div class="title"><img src="../static/bnn_soft/images/bnn_title_01.jpg"></div>
+{% endblock %}
+
+{% block content %}
+        <div class="content">
+            <div class="div">
+                <div class="title_01"></div>
+                <div class="circle"></div>
+                <div class="title_02"><label>{{_('社会情報')}}</label></div>
+                <div class="title_03"></div>
+                <div class="title_04"><label>{{_('社会の詳細情報をご覧ください')}}</label></div>
+            </div>
+            <div class="div">
+                <div class="title_01"></div>
+                <div class="circle"></div>
+                <div class="title_02"><label>{{_('社会理念')}}</label></div>
+                <div class="title_03"></div>
+                <div class="title_04">{{_('社会の経営理念など情報をご紹介します')}}</div>
+            </div>
+            <div class="div">
+                <div class="title_01"></div>
+                <div class="circle"></div>
+                <div class="title_02"><label>{{_('業務内容')}}</label></div>
+                <div class="title_03"></div>
+                <div class="title_04">{{_('社会の業務内容など情報をご紹介します')}}</div>
+            </div>
+            <div class="div">
+                <div class="title_01"></div>
+                <div class="circle"></div>
+                <div class="title_02"><label>{{_('採用情報')}}</label></div>
+                <div class="title_03"></div>
+                <div class="title_04">{{_('社会の採用情報など情報をご紹介します')}}</div>
+            </div>
+            <div class="message">
+                <div class="message_title"><div style="margin: auto 2px;">{{_('社長からのメッセージ')}}</div></div>
+                <div class="message_contents">
+                    {{_('変化の激しい世の中で、数々の困難に直面すると思いますが、')}}
+                    {{_('「逆水行舟、不進則退」の言葉を常に念頭に置いてます。')}}
+                    </br>
+                    {{_('私たちはまるで流れに逆らって舟ように進めています、進まなければ押し流されます')}}
+                    {{_('立ち止まることなく、自らを向上させるため、日々努力をされております。')}}
+                    {{_('危機感を持つ、自らの力で市場を創り、お客様に満足と感動をお届けできる企業を目指しております。')}}
+                    </br>
+                    {{_('「Everthing For Engineer」が弊社の主旨として、高度なソフトウェア開発技術者を集めています。')}}
+                    {{_('一人一人の気持ちを大切に、それぞれに合わせたステージをご提供させていただきたいと思っています。')}}
+                    {{_('今後ともご指導ご鞭撻のほど、何卒宜しくお願い申し上げます。')}}
+                    </br>
+                    </br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{_('陳磊')}}
+                    </br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{_('2017年07月')}}
+                </div>
+            </div>
+            <div class="topic">
+                <div class="topic_title"><div style="margin: auto 2px;">{{_('トピックス')}}</div></div>
+                <div class="topic_contents"></div>
+            </div>
+            <div class="contact">
+                <div class="contact_title"><div style="margin: auto 2px;">{{_('お問い合わせ先')}}</div></div>
+                <div class="contact_contents">
+                    {{_('お問い合わせ内容、お名前はinfo@bnn-soft.comに送付してください。')}}
+                    </br>
+                    {{_('住所: 〒272-0034 千葉県市川市市川南3-10-12 ３階')}}
+                    </br>
+                    {{_('Tel: 047-326-8544  Fax: 047-326-8544')}}
+                    </br>
+                    {{_('Email: info@bnn-soft.com')}}
+                    </br>
+                    {{_('Web: http://www.bnn-soft.com')}}
+                </div>
+            </div>
+        </div>
+    <script type="text/javascript">
+
+        function company() {
+            var url = {% url 'bnn_soft.bnn_company' %};
+            var form = $("#jump_form");
+            if (form) {
+                $(form).attr("action", url);
+                $(form).submit();
+            }
+        }
+
+    </script>
+{% endblock %}
+
+{% block footer %}
+    <div class="copyright"><p>Copyright BananaSoft Co. Ltd. All Rights Reserved.</p></div>
+{% endblock %}
