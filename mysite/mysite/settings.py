@@ -102,4 +102,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+# staticファルダはAppフォルダ中にある必要
 STATIC_URL = '/static/'
+
+# staticファルダはAppフォルダ外にあることはできる
+# '/var/www/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static/").replace('\\', '/'),
+)
