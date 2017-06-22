@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block html_title %}{{_('ホーム')}} | {{_('バナナソフト会社')}}{% endblock %}
+
+{% block header %}{% include 'sfs/moudel/header.html' %}{% endblock %}
+
+{% block title %}
+    <div class="title"><img src="../static/sfs/images/sfs_title_01.jpg"></div>
+{% endblock %}
+
+{% block content %}
+    <div id="contents" class="content">
+        <div class="content_content">
+            <div class="content_content_01">
+                <div class="icon_03"></div>
+                <div class="title_01">{{_('業務内容')}}</div>
+                <label></label>
+            </div>
+            <div></div>
+        </div>
+        <div id="content_goto" class="content_goto">
+            <ul>
+                <li><a>業務内容</a></li>
+                <li><a href="javascript: homepage();">ホ ー ム</a></li>
+                <li><a href="javascript: company_message();">社会情報</a></li>
+                <li><a href="javascript: company_idea();">経営理念</a></li>
+                <li><a href="javascript: company_employment();">採用情報</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    function homepage() {
+        var url = {% url 'sfs.homepage' %};
+        var form = $("#jump_form");
+        if (form) {
+            $(form).attr("action", url);
+            $(form).submit();
+        }
+    }
+
+    function company_message() {
+        var url = {% url 'sfs.company_message' %};
+        var form = $("#jump_form");
+        if (form) {
+            $(form).attr("action", url);
+            $(form).submit();
+        }
+    }
+
+    function company_idea() {
+        var url = {% url 'sfs.company_idea' %};
+        var form = $("#jump_form");
+        if (form) {
+            $(form).attr("action", url);
+            $(form).submit();
+        }
+    }
+
+    function company_business() {
+        var url = {% url 'sfs.company_business' %};
+        var form = $("#jump_form");
+        if (form) {
+            $(form).attr("action", url);
+            $(form).submit();
+        }
+    }
+
+    function company_employment() {
+        var url = {% url 'sfs.company_employment' %};
+        var form = $("#jump_form");
+        if (form) {
+            $(form).attr("action", url);
+            $(form).submit();
+        }
+    }
+
+    </script>
+{% endblock %}
+
+{% block footer %}
+    {{_('Copyright BananaSoft Co. Ltd. All Rights Reserved.')}}
+{% endblock %}
