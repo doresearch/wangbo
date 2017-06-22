@@ -115,4 +115,4 @@ STATICFILES_DIRS = (
 # コマンド: django-admin collectstatic
 #        python manage.py collectstatic
 #
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/').replace('\\', '/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_all/').replace('\\', '/')
