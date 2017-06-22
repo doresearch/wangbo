@@ -120,4 +120,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/bnn_soft/static/'
+# staticファルダはAppフォルダ中にある必要
+STATIC_URL = '/static/'
+
+# staticファルダはAppフォルダ外にあることはできる
+# '/var/www/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/').replace('\\', '/'),
+)
+
+# https://docs.djangoproject.com/en/1.8/ref/settings/#std:setting-STATIC_ROOT
+# コマンド: django-admin collectstatic
+#        python manage.py collectstatic
+#
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_all/').replace('\\', '/')

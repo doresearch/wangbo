@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 
 from bnn_soft.views import *
@@ -25,4 +27,4 @@ urlpatterns = [
     url(r'^aaaa/', aaaa, name='bnn_soft.aaaa'),
     url(r'^bbbb/', bbbb, name='bnn_soft.bbbb'),
     url(r'^cccc/', cccc, name='bnn_soft.cccc'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
