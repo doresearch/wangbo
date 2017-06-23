@@ -84,12 +84,21 @@ DATABASES = {
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # }
 
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mysite',
+    #     'USER': 'sa-shikyo',
+    #     'PASSWORD': 'Password1',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
+
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mysite',
-        'USER': 'sa-shikyo',
-        'PASSWORD': 'Password1',
-        'HOST': 'localhost',
+        'USER': 'sashikyo',
+        'PASSWORD': 'ZZQ19890218',
+        'HOST': 'sashikyo.mysql.pythonanywhere-services.com',
         'PORT': '3306',
     }
 
