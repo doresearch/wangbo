@@ -5,7 +5,6 @@
 {% block title %}
     <div class="title"><img src="../static/sfs/images/sfs_title_01.jpg"></div>
 {% endblock %}
-
 {% block content %}
     <div class="content">
         <div class="icon_01" onclick="javascript: company_message();">
@@ -43,25 +42,25 @@
             </div>
             <div class="line_02"></div>
             <div class="message_content">
-                    {{_('&nbsp;&nbsp;&nbsp;&nbsp;変化の激しい世の中で、数々の困難に直面すると思いますが、')}}
-                    {{_('「逆水行舟、不進則退」の言葉を常に念頭に置いてます。')}}
+                {{_('&nbsp;&nbsp;&nbsp;&nbsp;変化の激しい世の中で、数々の困難に直面すると思いますが、')}}
+                {{_('「逆水行舟、不進則退」の言葉を常に念頭に置いてます。')}}
+                </br>
+                </br>
+                {{_('&nbsp;&nbsp;&nbsp;&nbsp;私たちはまるで流れに逆らって舟ように進めています、進まなければ押し流されます')}}
+                {{_('立ち止まることなく、自らを向上させるため、日々努力をされております。')}}
+                {{_('危機感を持つ、自らの力で市場を創り、お客様に満足と感動をお届けできる企業を目指しております。')}}
+                </br>
+                </br>
+                {{_('&nbsp;&nbsp;&nbsp;&nbsp;「Everthing For Engineer」が弊社の主旨として、高度なソフトウェア開発技術者を集めています。')}}
+                {{_('一人一人の気持ちを大切に、それぞれに合わせたステージをご提供させていただきたいと思っています。')}}
+                {{_('今後ともご指導ご鞭撻のほど、何卒宜しくお願い申し上げます。')}}
+                </br>
+                </br>
+                <div style="text-align: right; margin-right: 20px;">
+                    {{_('陳磊')}}&nbsp;&nbsp;&nbsp;&nbsp;
                     </br>
-                    </br>
-                    {{_('&nbsp;&nbsp;&nbsp;&nbsp;私たちはまるで流れに逆らって舟ように進めています、進まなければ押し流されます')}}
-                    {{_('立ち止まることなく、自らを向上させるため、日々努力をされております。')}}
-                    {{_('危機感を持つ、自らの力で市場を創り、お客様に満足と感動をお届けできる企業を目指しております。')}}
-                    </br>
-                    </br>
-                    {{_('&nbsp;&nbsp;&nbsp;&nbsp;「Everthing For Engineer」が弊社の主旨として、高度なソフトウェア開発技術者を集めています。')}}
-                    {{_('一人一人の気持ちを大切に、それぞれに合わせたステージをご提供させていただきたいと思っています。')}}
-                    {{_('今後ともご指導ご鞭撻のほど、何卒宜しくお願い申し上げます。')}}
-                    </br>
-                    </br>
-                    <div style="text-align: right; margin-right: 20px;">
-                        {{_('陳磊')}}&nbsp;&nbsp;&nbsp;&nbsp;
-                        </br>
-                        {{_('2017年07月')}}
-                    </div>
+                    {{_('2017年07月')}}
+                </div>
             </div>
         </div>
         <div class="topic">
@@ -86,55 +85,6 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-
-    function homepage() {
-        var url = {% url 'sfs.homepage' %};
-        var form = $("#jump_form");
-        if (form) {
-            $(form).attr("action", url);
-            $(form).submit();
-        }
-    }
-
-    function company_message() {
-        var url = {% url 'sfs.company_message' %};
-        var form = $("#jump_form");
-        if (form) {
-            $(form).attr("action", url);
-            $(form).submit();
-        }
-    }
-
-    function company_idea() {
-        var url = {% url 'sfs.company_idea' %};
-        var form = $("#jump_form");
-        if (form) {
-            $(form).attr("action", url);
-            $(form).submit();
-        }
-    }
-
-    function company_business() {
-        var url = {% url 'sfs.company_business' %};
-        var form = $("#jump_form");
-        if (form) {
-            $(form).attr("action", url);
-            $(form).submit();
-        }
-    }
-
-    function company_employment() {
-        var url = {% url 'sfs.company_employment' %};
-        var form = $("#jump_form");
-        if (form) {
-            $(form).attr("action", url);
-            $(form).submit();
-        }
-    }
-
-    </script>
+    {% include 'sfs/moudel/common_js.html' %}
 {% endblock %}
-
 {% block footer %}{% include 'sfs/moudel/footer.html' %}{% endblock %}
