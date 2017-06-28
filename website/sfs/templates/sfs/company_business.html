@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
-{% block html_title %}{{_('ホーム')}} | {{_('バナナソフト会社')}}{% endblock %}
-
+{% block html_title %}{{_('業務内容')}} | {{_('SunFlower-Soft')}}{% endblock %}
 {% block header %}{% include 'sfs/moudel/header.html' %}{% endblock %}
-
 {% block title %}
     <div class="title"><img src="../static/sfs/images/sfs_title_01.jpg"></div>
 {% endblock %}
@@ -79,6 +77,4 @@
     </script>
 {% endblock %}
 
-{% block footer %}
-    {{_('Copyright BananaSoft Co. Ltd. All Rights Reserved.')}}
-{% endblock %}
+{% block footer %}{% include 'sfs/moudel/footer.html' %}{% endblock %}
