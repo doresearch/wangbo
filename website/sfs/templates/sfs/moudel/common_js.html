@@ -45,4 +45,12 @@ function company_employment() {
     }
 }
 
+var arr = ['/homepage/', '/company_message/', '/company_idea/', '/comoany_business/', '/comoany_employment/'];
+
+arr.map(function(item, index) {
+    console.log(index)
+    if (window.location.pathname == item) {
+        $('.goto a').eq(index).addClass('active');
+    }
+});
 </script>
