@@ -43,3 +43,40 @@ npm run build // 打包到项目中
 - index.js
   这个包的main.js
 
+### 方案
+
+  目前使用css的loading的办法，采用css提交cdn的办法，配合rem的js提交cdn来适应
+  - css
+    http://rc1-10035116.file.myqcloud.com/fs/yummy/common/main.css
+
+  - remJS
+    http://rc1-10035116.file.myqcloud.com/fs/yummy/common/fsrem.js
+    //接手rem数值
+    function setHtmlRem(a, b, bool) {
+      a = (typeof a).toLowerCase() == 'number' ? a : 960
+      b = (typeof b).toLowerCase() == 'number' ? b : 20
+      var win_width = document.documentElement.clientWidth
+      // if (win_width > 414) win_width = 414
+      var c = (win_width * b) / a,
+        onOff = true
+
+      document.getElementsByTagName('html')[0].style.fontSize = c + 'px'
+
+      function resizeAuto() {
+        if (onOff) {
+          onOff = false
+          setTimeout(function() {
+            c = (win_width * b) / a
+            document.getElementsByTagName('html')[0].style.fontSize = c + 'px'
+            onOff = true
+          }, 300)
+        }
+      }
+
+      if (bool) {
+        window.addEventListener('resize', resizeAuto)
+      }
+    }
+
+    setHtmlRem(375, 16, false)
+    使用
