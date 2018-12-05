@@ -5,11 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <style>
+      html {
+        touch-action: manipulation;
+      }
+      body,
+      html {
+        width: 100%;
+        overflow: hidden;
+      }
+      #div1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100px;
+        width: 100px;
+        background: rgba(240, 123, 123, 0.3);
+      }
+      .hide {
+        display: none;
+      }
+      input {
+        border: 1px solid #000 !important;
+      }
+      #div2 {
+        height: 50px;
+        width: 1000px;
+        background: #000;
+      }
+    </style>
   </head>
   <body>
     <div id="loading"></div>
     <div id="app">
-      <ADdress>北京市</ADdress>
+      <!-- <div id="div1"></div> -->
+      <div id="div2"></div>
+      <input type="text">
     </div>
     <div id="fixed"></div>
     <div id="tip"></div>

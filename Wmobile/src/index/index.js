@@ -1,5 +1,26 @@
 import '../../lib/css/normalize.css'
 import '../../lib/css/w.css'
+import { changeClass } from '../../lib/js/extend'
+let div = document.querySelector('#app div')
+// let fingePos = getPos()
+let input = document.querySelector('input')
+!(function() {
+  div.addEventListener('touchstart', ev => {
+    changeClass(div, 'add')
+    ev.preventDefault()
+  })
+  document.addEventListener(
+    'touchstart',
+    ev => {
+      ev.preventDefault()
+    },
+    { passive: false }
+  )
+
+  input.addEventListener('touchstart',ev=>{
+    ev.stopPropagation()
+  })
+})()
 
 function getPos() {
   let fingePos = {
@@ -15,10 +36,4 @@ function getPos() {
   return fingePos
 }
 
-let fingePos = getPos()
-
 // let address = document.getElementsByTagName('address')[0]
-
-document.addEventListener('touchstart', ev => {
-  ev.preventDefault()
-})
