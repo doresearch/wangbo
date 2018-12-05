@@ -1,0 +1,16 @@
+.DS_Store
+node_modules/
+Wmobile/node_modules/
+Wmobile/dist/
+Wmobile/npm-debug.log*
+Wmobile/yarn-debug.log*
+Wmobile/yarn-error.log*
+/Wmobile/package-lock.json
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

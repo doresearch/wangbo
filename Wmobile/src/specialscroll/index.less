@@ -1,0 +1,51 @@
+// #box {
+//   .square(10rem, red);
+//   margin: 0 auto;
+// }
+
+// #box1 {
+//   .square(5em, green);
+// }
+@r: 16rem;
+body,
+html,
+.card {
+  .square(100%, #ccc);
+  overflow: hidden;
+  position: relative;
+  perspective: 500px;
+  /*景深*/
+}
+.box {
+  position: absolute;
+  bottom: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  .square(200 / @r, transparent);
+  transform-style: preserve-3d;
+  /*避免子集元素的3d变化收到影响*/
+  transition: 1s all;
+  div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    .square(200 / @r, transparent);
+    transform-origin: -100px;
+    img {
+      .square(200 / @r, #fff);
+      vertical-align: center;
+      border-radius: 10px;
+      border: 1px solid #000;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+.box:hover {
+  // transform: rotateX(88deg);
+}
+
+.square(@size,@bg) {
+  height: @size;
+  width: @size;
+  background: @bg;
+}

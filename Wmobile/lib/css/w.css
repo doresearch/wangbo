@@ -1,0 +1,24 @@
+/**
+ * Remove the black block when you click
+ */
+
+a,
+img,
+button,
+input,
+textarea,
+div {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+/**
+ * 1. Remove pre-html-set style
+ * 2. Remove the outline (green in chrome, orange in mobile)
+ * 3. Remove the border (just look like box-shadow) style
+ */
+input,
+textarea {
+  -webkit-appearance: none; /* 1 */
+  outline: none; /* 2 */
+  border: none; /* 3 */
+}
