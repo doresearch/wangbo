@@ -1,0 +1,1 @@
+querySelect、querySelectAll 支持度100%

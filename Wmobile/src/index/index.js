@@ -5,20 +5,37 @@ let div = document.querySelector('#app div')
 // let fingePos = getPos()
 let input = document.querySelector('input')
 !(function() {
-  div.addEventListener('touchstart', ev => {
-    changeClass(div, 'add')
-    ev.preventDefault()
-  })
-  document.addEventListener(
-    'touchstart',
-    ev => {
-      ev.preventDefault()
-    },
-    { passive: false }
-  )
+  // div.addEventListener('touchstart', ev => {
+  //   changeClass(div, 'add')
+  //   ev.preventDefault()
+  // })
+  // document.addEventListener(
+  //   'touchstart',
+  //   ev => {
+  //     ev.preventDefault()
+  //   },
+  //   { passive: false }
+  // )
 
-  input.addEventListener('touchstart',ev=>{
+  input.addEventListener('touchstart', ev => {
     ev.stopPropagation()
+  })
+
+  input.addEventListener('drop', function(event) {
+    // 获取拖拽文本内容
+    var text = event.dataTransfer.getData('text')
+    if (this.value == '' && text.match(/\d/g) && text.match(/\d/g).length == 11) {
+      event.preventDefault()
+      input.value = text.replace(/\D/g, '')
+      input.select()
+    }
+  })
+  let inputs = [...document.querySelectorAll('input, textarea')]
+  inputs.forEach(function(ele) {
+    ele.addEventListener('paste', function(event) {
+      var clipboardData = event.clipboardData || window.clipboardData
+      if (!clipboardData) return
+    })
   })
 })()
 
