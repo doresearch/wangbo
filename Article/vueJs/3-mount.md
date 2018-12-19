@@ -1,0 +1,129 @@
+### mount
+
+entry-runtime-with-compiler.js
+
+在这个入口文件下
+
+const mount = Vue.prototype.$mount 方法
+
+第一次是用来存储方法，这个时候用的$mount是来自于./runtime/index中 Vue.prototype 的方法，
+
+```
+Vue.prototype.$mount = function (
+  el?: string | Element,
+  hydrating?: boolean
+): Component {
+  el = el && inBrowser ? query(el) : undefined
+  return mountComponent(this, el, hydrating)
+}
+```
+
+mountComponent 方法来自 core中的定义基本框架如下
+
+```
+mountComponent = function(vm, el, hydrating = false){
+  if(!vm.$options.render){
+    <!-- 首先判断有没有render，没有就抛出错误 -->
+  }
+
+  <!-- 生命周期 -->
+  callHook(vm, 'beforeMount')
+
+  if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+    <!-- 性能代码，需要打开production去看 -->
+  }else{
+    <!-- 更新DOM -->
+  }
+  <!-- 设定一个监听来更新页面，底下第true就是设定是renderWatcher -->
+  new Watcher(vm, updateComponent, noop, {
+    before () {
+      if (vm._isMounted) {
+        callHook(vm, 'beforeUpdate')
+      }
+    }
+  }, true /* isRenderWatcher */)
+
+  // manually mounted instance, call mounted on self
+  // mounted is called for render-created child components in its inserted hook
+  if (vm.$vnode == null) {
+    vm._isMounted = true
+    callHook(vm, 'mounted')
+  }
+  return vm
+}
+````
+
+然后入口文件下对 $mount 进行了重写
+
+```
+Vue.prototype.$mount = function (
+  el?: string | Element,
+  hydrating?: boolean
+): Component {
+  el = el && query(el)
+
+  /* istanbul ignore if */
+  <!-- 禁止mount挂载在body上 -->
+  if (el === document.body || el === document.documentElement) {
+    process.env.NODE_ENV !== 'production' && warn(
+      `Do not mount Vue to <html> or <body> - mount to normal elements instead.`
+    )
+    return this
+  }
+
+  const options = this.$options
+  // resolve template/el and convert to render function
+  <!-- 这一段就是实现runtime没有的编译功能，把template转成render，有template就转换，没有就抛出 -->
+  <!-- 赋值template -->
+  if (!options.render) {
+    let template = options.template
+    if (template) {
+      if (typeof template === 'string') {
+        if (template.charAt(0) === '#') {
+          template = idToTemplate(template)
+          /* istanbul ignore if */
+          if (process.env.NODE_ENV !== 'production' && !template) {
+            warn(
+              `Template element not found or is empty: ${options.template}`,
+              this
+            )
+          }
+        }
+      } else if (template.nodeType) {
+        template = template.innerHTML
+      } else {
+        if (process.env.NODE_ENV !== 'production') {
+          warn('invalid template option:' + template, this)
+        }
+        return this
+      }
+    } else if (el) {
+      template = getOuterHTML(el)
+    }
+    <!-- 有template数值的赋值内容存在，就编译成render，作为vue识别的内容 -->
+    if (template) {
+      /* istanbul ignore if */
+      if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+        mark('compile')
+      }
+
+      const { render, staticRenderFns } = compileToFunctions(template, {
+        shouldDecodeNewlines,
+        shouldDecodeNewlinesForHref,
+        delimiters: options.delimiters,
+        comments: options.comments
+      }, this)
+      options.render = render
+      options.staticRenderFns = staticRenderFns
+
+      /* istanbul ignore if */
+      if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
+        mark('compile end')
+        measure(`vue ${this._name} compile`, 'compile', 'compile end')
+      }
+    }
+  }
+  return mount.call(this, el, hydrating)
+}
+```
+

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.config.js",
     "build": "webpack --config build/webpack.config.build.js --color",
-    "test": "webpack main.js"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -36,10 +36,12 @@
     "glob": "^7.1.3",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "style-loader": "^0.21.0",
+    "swiper": "^4.4.2",
     "vconsole": "^3.2.0"
   }
 }

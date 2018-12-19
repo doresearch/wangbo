@@ -67,6 +67,6 @@ module.exports = {
         changeOrigin: true
       }
     },
-    quiet: true
+    quiet: false
   }
 }
