@@ -1,37 +1,50 @@
 // Swiper + tweenMax
 import './tweenMax'
-import Swiper from 'swiper'
-import { randomColor } from '../../lib/js/extend'
 import './index.less'
-import './animate.less'
 
-function _$(el) {
-  return [...document.querySelectorAll(el)]
+// bind
+let ceshi = function(...arg) {
+  console.log(this)
+  console.log(arg)
 }
 
-_$('.swiper-slide').map((item, i) => {
-  item.style.background = randomColor()
-})
+let funca = ceshi.bind({ a: 1 }, 1, 2, 3)
+let funcc = new funca()
+console.log(funca, funca(4), funcc)
 
-var mySwiper = new Swiper('.swiper-container', {
-  direction: 'vertical', // 垂直切换选项
-  // slidesPerView: 'auto',
-  // autoHeight: 'auto',
-  // loop: true, // 循环模式选项
+Function.prototype._bind = function(func, ...arg) {
+  let self = this
 
-  // 如果需要分页器
-  // pagination: {
-  //   el: '.swiper-pagination'
-  // },
+  // self.prototype = Object.create(func.prototype)
+  let Bound = function(...list) {
+    self.apply(func, [...arg, ...list])
+  }
 
-  // // 如果需要前进后退按钮
-  // navigation: {
-  //   nextEl: '.swiper-button-next',
-  //   prevEl: '.swiper-button-prev'
-  // },
+  return Bound
+}
 
-  // // 如果需要滚动条
-  scrollbar: {
-    el: '.swiper-scrollbar'
+let funcb = ceshi._bind({ a: 1 }, 1, 2, 3)
+let funcd = new funcb()
+console.log(funcb, funcb(4), funcd)
+
+$(document)
+  .ajaxStart(onStart)
+  .ajaxSuccess(onSuccess)
+  .ajaxComplete(onComplete)
+function onSuccess() {
+  console.log('global>>>>>>>>>>>>onSuccess')
+}
+function onComplete() {
+  console.log('global>>>>>>>>>>>>onComplete')
+}
+function onStart() {
+  console.log('global>>>>>>>>>>>>start')
+}
+
+$.ajax({
+  // global: false,
+  url: 'http://127.0.0.1:9200/specialscroll.html',
+  success(res) {
+    console.log('--->su')
   }
 })

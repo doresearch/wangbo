@@ -4,7 +4,7 @@ entry-runtime-with-compiler.js
 
 在这个入口文件下
 
-const mount = Vue.prototype.$mount 方法
+const mount = Vue.prototype.$mount 方法 
 
 第一次是用来存储方法，这个时候用的$mount是来自于./runtime/index中 Vue.prototype 的方法，
 
@@ -17,6 +17,12 @@ Vue.prototype.$mount = function (
   return mountComponent(this, el, hydrating)
 }
 ```
+
+重写的原因是因为runtime版本没有这部分逻辑
+
+多余部分逻辑： 1. 挂载位置body，html判断；2.如果写了render函数就直接使用否则就启用编译。
+
+vue最终只认识render函数做渲染
 
 mountComponent 方法来自 core中的定义基本框架如下
 
@@ -63,7 +69,7 @@ Vue.prototype.$mount = function (
   el = el && query(el)
 
   /* istanbul ignore if */
-  <!-- 禁止mount挂载在body上 -->
+  <!-- 禁止mount挂载在body上: 原因是因为会添加新节点、删除旧节点 -->
   if (el === document.body || el === document.documentElement) {
     process.env.NODE_ENV !== 'production' && warn(
       `Do not mount Vue to <html> or <body> - mount to normal elements instead.`
@@ -126,4 +132,3 @@ Vue.prototype.$mount = function (
   return mount.call(this, el, hydrating)
 }
 ```
-
