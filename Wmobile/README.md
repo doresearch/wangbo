@@ -80,3 +80,10 @@ npm run build // 打包到项目中
 
     setHtmlRem(375, 16, false)
     使用
+
+
+### typescript
+
+如果使用了typescript还需要使用babel么？
+
+typescript

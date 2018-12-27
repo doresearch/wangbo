@@ -5,8 +5,17 @@ const path = require('path')
 const process = require('process')
 const glob = require('glob')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HappyPack = require('happypack')
+// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const MinifyPlugin = require('babel-minify-webpack-plugin')
 
+new HappyPack({
+  id: 'css',
+  loaders: ['style-loader', 'css-loader'],
+  threads: 4, //代表开启几个子进程去处理这一类型的文件
+  verbose: true //是否允许输出日子
+})
 let _entry = {}
 let _plugin = []
 
@@ -14,14 +23,26 @@ let files = glob.sync('src/**/index.js')
 
 files.forEach((item, index) => {
   const filename = item.split('/')[1]
-  _entry[filename] = path.resolve(__dirname, './' + item)
+  _entry[filename] = './' + item
   _plugin[index] = new HtmlWebpackPlugin({
-    filename: __dirname + '/dist/' + filename + '/' + 'index.html',
+    filename: filename + '.html',
     template: item.replace('.js', '.html'),
     chunks: [filename]
   })
 })
-_plugin.push(new CleanWebpackPlugin(['dist']))
+_plugin.push(
+  new MiniCssExtractPlugin({
+    filename: '[name]/index.css',
+    chunkFilename: '[id].css'
+  })
+)
+_plugin.push(new MinifyPlugin({
+  "deadcode": {
+    "keepFnName": true
+  }
+}))
+
+_plugin.push(new CleanWebpackPlugin(['../dist']))
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -30,9 +51,9 @@ function resolve(dir) {
 module.exports = {
   entry: _entry,
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name]/index.[contenthash].js',
-    publicPath: '/'
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name]/index.[contenthash].js',
+    publicPath: '../'
   },
   module: {
     rules: [
@@ -44,8 +65,8 @@ module.exports = {
         }
       },
       {
-        test: /\.less/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        test: /\.less|\.css/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader']
       },
       {
         test: /\.js$/,
@@ -56,5 +77,5 @@ module.exports = {
   },
   plugins: _plugin,
   mode: 'production',
-  devtool: 'source-map'
+  // devtool: 'source-map'
 }

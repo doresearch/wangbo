@@ -5,9 +5,11 @@ const webpack = require('webpack')
 const path = require('path')
 const glob = require('glob')
 const config = require('./config')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 let _entry = {}
 let _plugin = []
 let files = glob.sync('src/**/index.js')
+
 // 这个是一个入口文件，然后根据入口文件生成
 files.forEach((item, index) => {
   const filename = item.split('/')[1]
@@ -18,6 +20,12 @@ files.forEach((item, index) => {
     chunks: [filename]
   })
 })
+_plugin.push(
+  new MiniCssExtractPlugin({
+    filename: "[name]/index.css",
+    chunkFilename: "[id].css"
+  })
+)
 _plugin.push(new webpack.HotModuleReplacementPlugin())
 
 function resolve(dir) {
@@ -40,7 +48,12 @@ module.exports = {
     rules: [
       {
         test: /\.less|\.css/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
       },
       {
         test: /\.js/,

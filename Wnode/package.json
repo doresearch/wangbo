@@ -1,0 +1,24 @@
+{
+  "name": "koa-init",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/cli": "^3.0.3",
+    "koa": "^2.5.3",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "0.0.16",
+    "koa-router": "^7.4.0",
+    "koa-static-cache": "^5.1.2",
+    "koa-swig": "^2.2.1",
+    "mysql2": "^1.6.1",
+    "node-mysql-promise": "0.0.7",
+    "sequelize": "^4.38.1",
+    "vue": "^2.5.17"
+  }
+}

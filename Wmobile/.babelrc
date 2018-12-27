@@ -1,13 +1,22 @@
 {
-  "presets": [["env"], "stage-2"],
+  "presets": [
+    ["env"],
+    "stage-2",
+    ["minify", {
+      "mangle": {
+        "exclude": ["MyCustomError"]
+      },
+    }]
+  ],
   "comments": false,
   "plugins": [
+    "minify-dead-code-elimination",
     [
       "transform-runtime",
       {
         "polyfill": false,
         "regenerator": true
       }
-    ]
+    ],
   ]
 }

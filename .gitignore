@@ -2,6 +2,14 @@
 node_modules/
 Wmobile/node_modules/
 Wmobile/dist/
+Wnode/dist/
+Wnode/npm-debug.log*
+Wnode/yarn-debug.log*
+Wnode/node_modules
+WTypeScript/npm-debug.log*
+WTypeScript/yarn-debug.log*
+WTypeScript/node_modules
+/WTypeScript/package-lock.json
 Wmobile/npm-debug.log*
 Wmobile/yarn-debug.log*
 Wmobile/yarn-error.log*
