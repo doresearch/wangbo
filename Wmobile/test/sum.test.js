@@ -1,4 +1,4 @@
-const { sum, yewu } = require('../src/sum')
+const { sum, yewu } = require('../src/radar/sum')
 
 test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3)

@@ -1,6 +1,6 @@
 // Swiper + tweenMax
 // import './tweenMax'
-// import './index.less'
+import './index.less'
 import { randomColor } from '../../lib/js/extend'
 let a = randomColor()
 // let ceshi = function(...arg) {

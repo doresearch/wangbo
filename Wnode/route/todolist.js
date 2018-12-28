@@ -33,6 +33,12 @@ const linkmysql = async function() {
     try {
       let { username, age, gender = '男', account, password } = ctx.query
       let uuid = Date.now().toString()
+
+      mysql.table('table').add(data).then(function (insertId) {
+        //如果插入成功，返回插入的id
+      }).catch(function (err) {
+            //插入失败，err为具体的错误信息
+        })
       let sql = await connection.query(`Insert INTO users(uuid,username,age,gender,account,password) 
       VALUES( '${uuid}', '${username}', ${age}, '${gender}', '${account}', '${password}')`)
       let status = 200
