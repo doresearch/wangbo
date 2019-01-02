@@ -1,0 +1,10 @@
+{
+  "name": "图书搜索",
+  "short_name": "书查",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#333",
+  "description": "一个搜索图书的小WebAPP（基于豆瓣开放接口）",
+  "orientation": "portrait-primary",
+  "theme_color": "#5eace0"
+}

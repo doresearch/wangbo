@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.config.js",
-    "build": "webpack --config build/webpack.config.build.js --color",
+    "build": "webpack --config build/webpack.config.build.js --color&&  rm -fr ./dist  && mv -f dist_temp dist",
     "test": "jest"
   },
   "keywords": [],

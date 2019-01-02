@@ -4,7 +4,6 @@ const webpack = require('webpack')
 const path = require('path')
 const process = require('process')
 const glob = require('glob')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HappyPack = require('happypack')
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -42,7 +41,6 @@ _plugin.push(new MinifyPlugin({
   }
 }))
 
-_plugin.push(new CleanWebpackPlugin(['../dist']))
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -51,7 +49,7 @@ function resolve(dir) {
 module.exports = {
   entry: _entry,
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../dist_temp'),
     filename: '[name]/index.[contenthash].js',
     publicPath: '../'
   },
