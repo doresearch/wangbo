@@ -2,7 +2,7 @@ module.exports = {
   pages: {
     // index: {
     //   // page 的入口
-    //   entry: 'src/index/main.js',
+    //   entry: 'src/main.ts',
     //   // 模板来源
     //   template: 'public/index.html',
     //   // 在 dist/index.html 的输出
@@ -19,10 +19,10 @@ module.exports = {
     // 并且如果找不到的话，就回退到 `public/index.html`。
     // 输出文件名会被推导为 `subpage.html`。
     // 厉害了😁
-    App1: 'src/main.ts',
+    app1: 'src/main.ts',
     App2: 'src/main2.ts'
   },
-  baseUrl: process.env.NODE_ENV === 'production' ? '/production-sub-path/' : '/ceshi',
+  baseUrl: process.env.NODE_ENV === 'production' ? '/production-sub-path/' : '/',
   lintOnSave: process.env.NODE_ENV !== 'production',
   // 使用 chainWebpack 调整内联文件的大小限制
   chainWebpack: config => {
