@@ -1,5 +1,5 @@
 // import { random } from "./lib";
-import a = require("./lib");
+import a = require('./lib')
 // class Greeter {
 //   greeting: string;
 //   constructor(message: string) {
@@ -19,4 +19,17 @@ import a = require("./lib");
 //   };
 // }
 // random()
-console.log(a)
+// console.log(a)
+
+let button = document.querySelector('.button')
+
+console.log('button', button)
+button.addEventListener('click', function(this: void, e) {
+  console.log(this, '&&', e)
+})
+
+// 函数模块
+
+function addZero(x:string){
+  return 
+}

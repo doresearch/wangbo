@@ -10,3 +10,9 @@
     npm i typescript (-s)
 
     这个时候在当前目录下 node_modules/.bin/tsc就可以编译
+
+    关于ts中的概念
+
+
+### 关于ts中this的使用
+    
