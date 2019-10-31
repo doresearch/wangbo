@@ -18,7 +18,7 @@
     "koa-swig": "^2.2.1",
     "mysql2": "^1.6.1",
     "node-mysql-promise": "0.0.7",
-    "sequelize": "^4.38.1",
+    "sequelize": "^5.15.1",
     "supervisor": "^0.12.0",
     "vue": "^2.5.17"
   }
